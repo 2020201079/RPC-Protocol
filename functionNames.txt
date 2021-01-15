@@ -1,2 +1,4 @@
 ConcatenateMessage str
 add int int
+mult int int
+divide int int

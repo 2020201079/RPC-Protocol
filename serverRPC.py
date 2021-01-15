@@ -69,6 +69,13 @@ def main():
                 elif data == b'getFunctions':
                     funcNamesJson = jsonify(rpc.functionsRegistered)
                     conn.sendall(str.encode(funcNamesJson))
+                else:
+                    data = data.decode('utf-8')
+                    funcDetails = json.loads(data)
+                    print(funcDetails)
+                    methodToCall = getattr(server,funcDetails['name'])
+                    ans = methodToCall(*funcDetails['args'])
+                    conn.sendall(str.encode(str(ans)))
     
 
 if __name__ == "__main__":
