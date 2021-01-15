@@ -1,0 +1,2 @@
+ConcatenateMessage str
+add int int
